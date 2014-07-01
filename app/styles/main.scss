@@ -1,0 +1,209 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+/*
+ * VARIABLES
+ */
+$brandBackgroundColour: #333;
+$brandPrimaryColour: #ad141e;
+
+$white: #fff;
+$grey: #333;
+$darkenedGrey: darken($grey, 10%);
+$lightenedGrey: lighten($grey, 10%);
+
+// bower:scss
+@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+/*
+ * MIXINS
+ */
+@mixin box-sizing($value) {
+    -webkit-box-sizing: $value;
+    -moz-box-sizing: $value;
+    -ms-box-sizing: $value;
+    box-sizing: $value;
+}
+
+@mixin box-shadow($valueOne, $valueTwo: false) {
+    /*-webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.1) inset;*/
+
+    @if variable-exists($valueTwo) {
+        -webkit-box-shadow: $valueOne, $valueTwo;
+        -moz-box-shadow: $valueOne, $valueTwo;
+        -ms-box-shadow: $valueOne, $valueTwo;
+        box-shadow: $valueOne, $valueTwo;
+    } else {
+        -webkit-box-shadow: $valueOne;
+        -moz-box-shadow: $valueOne;
+        -ms-box-shadow: $valueOne;
+        box-shadow: $valueOne;
+    }
+}
+
+@mixin text-shadow($value) {
+    -webkit-text-shadow: $value;
+    -moz-text-shadow: $value;
+    -ms-text-shadow: $value;
+    text-shadow: $value;
+}
+
+$selector: agent;
+$counter: 2;
+$zCounter: 2;
+$fontCounter: 6;
+
+@for $i from 0 through $counter {
+    .centered .#{$selector}:nth-child(#{$i}) {
+        top: #{40 * $i}px;
+        z-index: $zCounter + $i;
+        left: 50%;
+        right: auto;
+        width: #{225 * $i/3}px;
+        position: absolute;
+        margin-left: -#{(225 * $i)/($counter - 4)}px;
+        font-size: #{$i/$fontCounter}em;
+    }
+}
+
+/*
+ * FONTS
+ */
+@font-face {
+    font-family: "Oswald Light";
+    src: url('../assets/font/oswald/oswald-light.eot');
+    src: url('../assets/font/oswald/oswald-light.eot?#iefix') format('embedded-opentype'),
+         url('../assets/font/oswald/oswald-light.woff') format('woff'),
+         url('../assets/font/oswald/oswald-light.ttf') format('truetype'),
+         url('../assets/font/oswald/oswald-light.svg#oswald-light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    font-size: unset;
+}
+
+body {
+    font-size: 1em;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+.container {
+    font-family: 'Oswald Light';
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+    background: $darkenedGrey;
+    color: $white;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0;
+    overflow: hidden;
+
+    a {
+        color: $white;
+    }
+
+    h1 {
+        background: $brandPrimaryColour;
+        padding: 13px 20px;
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    h1, nav {
+        float: left;
+    }
+
+    nav {
+        margin-left: 30px;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 30px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        a {
+            display: block;
+            padding: 15px 0;
+        }
+    }
+
+    /* Make the masthead heading the same height as the navigation */
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+        padding-bottom: 19px;
+    }
+}
+
+
+/*
+ * FOOTER
+ */
+.footer {
+    bottom: 0;
+    background: $grey;
+    color: $white;
+    width: 100%;
+    font-family: 'Oswald Light';
+
+    p {
+        padding: 20px;
+    }
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+    .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+    }
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+    p + h4 {
+        margin-top: 28px;
+    }
+}
+
+
+/* GRID CUSTOMISATION */
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-left: 0;
+    padding-right: 0;
+}

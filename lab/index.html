@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Backbone Lab and Experiments</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Lab &amp; Experiments</h1>
+
+        <form id="add-task" action="">
+            <input type="text" placeholder="Your new task" />
+            <input type="submit" value="Add task" />
+        </form>
+
+        <div id="app"></div>
+    </div>
+
+<!-- tenmplates -->
+<script id="task-template" type="text/template">
+    <span><%= title %></span> <button class="edit">Edit</button> | <button class="delete">Delete</button>
+</script>
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/underscore/underscore.js"></script>
+<script src="../bower_components/backbone/backbone.js"></script>
+<script src="../bower_components/backbone.localStorage/backbone.localStorage.js"></script>
+
+<script>
+(function($, window) {
+
+    // global app namespace
+    var App = {
+        Models: {},
+        Collections: {},
+        Views: {},
+        Routers: {},
+        Helpers: {
+            template: function(id) {
+                return _.template($('#' + id).html());
+            }
+        }
+    };
+
+
+    // model
+    App.Models.Task = Backbone.Model.extend({
+        validate: function(attrs) {
+            if(!$.trim(attrs.title)) {
+                console.log('A task requires a valid title');
+                return 'A task requires a valid title';
+            }
+        }
+    });
+
+
+    // collection
+    App.Collections.Tasks = Backbone.Collection.extend({
+        model: App.Models.Task,
+        localStorage: new Backbone.LocalStorage('tasks')
+    });
+
+    // a single task view
+    App.Views.Task = Backbone.View.extend({
+        tagName: 'li',
+
+        template: App.Helpers.template('task-template'),
+
+        initialize: function() {
+            this.model.on('change', this.render, this);
+            this.model.on('destroy', this.remove, this);
+        },
+
+        events: {
+            'click .edit': 'editTask',
+            'click .delete': 'deleteTask'
+        },
+
+        editTask: function() {
+            var newTaskTitle = prompt('What do you wanna do?', this.model.get('title'));
+
+            // Go and check the validate method in the model
+            /*if (!newTaskTitle) {
+                return;
+            }*/
+
+            this.model.set({ title: newTaskTitle }, { validate: true });
+        },
+
+        deleteTask: function() {
+            this.model.destroy();
+        },
+
+        remove: function() {
+            this.$el.remove();
+        },
+
+        render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        }
+    });
+
+    // a tasks list view
+    App.Views.Tasks = Backbone.View.extend({
+        tagName: 'ul',
+
+        initialize: function() {
+            this.listenTo(this.collection, 'add', this.addOne);
+            this.collection.fetch({ reset: true });
+        },
+
+        render: function() {
+            this.collection.each(this.addOne, this);
+            return this;
+        },
+
+        addOne: function(task) {
+            var taskView = new App.Views.Task({ model: task });
+            this.$el.append(taskView.render().el);
+        }
+    });
+
+
+    // add task form view (already in html file)
+    App.Views.AddTask = Backbone.View.extend({
+        el: '#add-task',
+
+        initialize: function() {},
+
+        events: {
+            'submit': 'submitTask'
+        },
+
+        submitTask: function(e) {
+            var newTaskTitle = this.$el.find('input[type="text"]').val(),
+                task = new App.Models.Task({ title: newTaskTitle });
+
+            e.preventDefault();
+
+            this.collection.create({ title: newTaskTitle });
+
+        }
+    });
+
+    // make app global
+    window.App = App;
+
+    // tasks data, should be in some data storage like
+    // a database or local-storage/session-storage
+    /*var tasksList = new App.Collections.Tasks([
+        { title: 'Go to the store', priority: 2 },
+        { title: 'Go to Wives', priority: 1 },
+        { title: 'Go to kung fu class', priority: 3 }
+    ]);*/
+    var tasksList = new App.Collections.Tasks;
+
+    // initialise the views
+    var addTaskView = new App.Views.AddTask({ collection: tasksList }),
+        tasksView = new App.Views.Tasks({ collection: tasksList });
+
+    // add tasksView to html
+    $('#app').html(tasksView.render().el);
+
+}(jQuery, window));
+</script>
+</body>
+</html>

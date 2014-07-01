@@ -1,0 +1,10 @@
+<article class="agent">
+    <h2 class="agent-name">
+        <span class="agent-id"><%= id %></span> . <%= name %>
+    </h2>
+    <h3 class="agency">From: <%= agency %></h3>
+    <p><%= tel %> | <a href="mailto:<%= email %>"><%= email %></a></p>
+    <p>Role: <span class="role"><%= role %></span></p>
+    <p>On: <%= calldate %></p>
+    <a class="delete-btn" href="#">delete</a> | <a class="view-details-btn prim-btn" href="#agents/<%= id %>">view details</a>
+</article>

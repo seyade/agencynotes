@@ -1,0 +1,30 @@
+<h1 class="agent-name"><%= name %></h1>
+<p class="agency">@ <%= agency %></p>
+
+<h2>Contact</h2>
+<p>Tel: <%= tel %></p>
+<p>Email: <%= email %></p>
+
+<h2>Job Information</h2>
+<p><%= role %></p>
+<p>Called on: <%= calldate %></p>
+<p><%= other %></p>
+<p><%= id %> | <%= status %></p>
+<!--
+    "status" values:
+    0 => no response yet
+    1 => application pending (cv sent to clients)
+    2 => interview stage
+    3 => done interview, waiting for feedback
+    4 => got the job
+    5 => look for another job
+-->
+
+<!--
+<div class="control-btns">
+    <a class="prev-agent" href="#agents/<%= id %>">prev</a>
+    <a class="next-agent" href="#agents/<%= id %>">next</a>
+</div>
+-->
+
+<a class="prim-btn" href="#agents">back to list</a>
