@@ -79,6 +79,7 @@ define(function(require) {
                 }
             ]);*/
 
+            console.log('This AN home page!');
             this.appView = new AppView;
             this.$main.html(this.appView.render().el);
         },
@@ -95,7 +96,7 @@ define(function(require) {
 
         changeView: function(view) {
             if(this.currentView) {
-                if (this.currentView == view) {
+                if (this.currentView === view) {
                     return;
                 }
 
