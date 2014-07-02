@@ -1,5 +1,8 @@
-/*global define*/
-
+/**
+ * @name AgentsListView
+ * @description display a list of agents
+ * @param {function} require
+ */
 define(function (require) {
     'use strict';
 
@@ -13,13 +16,14 @@ define(function (require) {
 
     AgentsListView = Backbone.View.extend({
         tagName: 'ul',
+        // added extra classes from Bootstrap
         className: 'agents-list list-unstyled list-group',
 
         initialize: function () {
             this.listenTo(this.collection, 'add', this.addAgent);
+
+            // to reset the collection in the view
             this.collection.fetch({ reset: true });
-
-
         },
 
         render: function () {

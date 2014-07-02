@@ -1,6 +1,8 @@
-/*global define*/
-
-define(function (require) {
+/**
+ * @name AgentsCollection
+ * @description collection of model type: Agent
+ * @param {function} require
+ */define(function (require) {
     'use strict';
 
     var _ = require('underscore'),

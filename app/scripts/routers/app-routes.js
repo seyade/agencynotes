@@ -1,4 +1,9 @@
-define(function(require) {
+/**
+ * @name AppRoutes
+ * @description navigate through the agencynotes app
+ * @param {function} require
+ */
+define(function (require) {
     'use strict';
 
     var _ = require('underscore'),
@@ -79,8 +84,7 @@ define(function(require) {
                 }
             ]);*/
 
-            console.log('This AN home page!');
-            this.appView = new AppView;
+            this.appView = new AppView({ collection: this.agentsCollection });
             this.$main.html(this.appView.render().el);
         },
 

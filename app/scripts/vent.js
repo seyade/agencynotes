@@ -1,5 +1,8 @@
-/* Event Aggregator */
-
+/**
+ * @name EventManager
+ * @description event object to trigger and listen to events throughout the app
+ * @param {function} require
+ */
 define(function (require) {
     'use strict';
 

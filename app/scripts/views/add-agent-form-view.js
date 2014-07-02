@@ -1,5 +1,8 @@
-/*global define*/
-
+/**
+ * @name AddAgentFormView
+ * @description the form to add agent details
+ * @param {function} require
+ */
 define(function (require) {
     'use strict';
 
@@ -20,6 +23,7 @@ define(function (require) {
         },
 
         addAgentDetails: function(e) {
+            // object to get details from form fields
             var formData = {
                 id: this.$el.find('#id').val(),
                 name: this.$el.find('#name').val(),

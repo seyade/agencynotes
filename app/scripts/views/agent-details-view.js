@@ -1,5 +1,8 @@
-/*global define*/
-
+/**
+ * @name AgentDetailsView
+ * @description display an agent full details
+ * @param {function} require
+ */
 define(function (require) {
     'use strict';
 
@@ -14,9 +17,9 @@ define(function (require) {
 
     AgentDetailsView = Backbone.View.extend({
 
-        template: _.template(AgentDetailsViewTemplate),
         tagName: 'article',
         className: 'agent-detail',
+        template: _.template(AgentDetailsViewTemplate),
 
         events: {},
 
