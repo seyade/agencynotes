@@ -8,11 +8,7 @@ define(function (require) {
 
     var _ = require('underscore'),
         Backbone = require('backbone'),
-        Agent = require('models/agent'),
-        AgentListView = require('collections/agents'),
-        AgentView = require('views/agent-view'),
         AgentsListHeaderTemplate = require('text!../templates/agents-list-header-view.html'),
-        EventManager = require('vent'),
         AgentsListHeaderView;
 
     AgentsListHeaderView = Backbone.View.extend({
