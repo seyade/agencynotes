@@ -8,9 +8,6 @@ define(function (require) {
 
     var _ = require('underscore'),
         Backbone = require('backbone'),
-        Agent = require('models/agent'),
-        AgentListView = require('collections/agents'),
-        AgentView = require('views/agent-view'),
         AgentDetailsViewTemplate = require('text!../templates/agent-details-view.html'),
         EventManager = require('vent'),
         AgentDetailsView;

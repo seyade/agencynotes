@@ -1,6 +1,6 @@
 /**
  * @name AgentsListHeaderView
- * @description list header with dynamic badge displaying number of agents
+ * @description listing header with dynamic badge displaying number of agents
  * @param {function} require
  */
 define(function (require) {
