@@ -34,6 +34,8 @@ define(function (require) {
 
             // wrap list view in a 'section' tag for semantic and styling purposes
             this.agentsListView.$el.wrap('<section class="list-panel"></section>');
+
+            // add listing header to list view
             this.$el.find('.list-panel').prepend(this.listHeaderView.render().el);
 
             //this.$el.find('.list-panel').append('<p class="empty-msg hidden">Please add an agent.</p>');

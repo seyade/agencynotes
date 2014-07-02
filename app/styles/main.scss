@@ -87,6 +87,10 @@ $fontCounter: 6;
     font-style: normal;
 }
 
+html, body {
+    font-size: inherit;
+}
+
 
 .browsehappy {
     margin: 0.2em 0;
@@ -129,7 +133,7 @@ $fontCounter: 6;
         font-weight: bold;
         background: $grey;
         color: $white;
-        padding: 25px;
+        padding: 24px 25px;
         width: 100%;
     }
 }
@@ -137,8 +141,7 @@ $fontCounter: 6;
 .list-panel {
     background: url("../images/tactile_noise.png") repeat 0 0 transparent;
     width: 70%;
-    min-height: 669px;
-    min-height: 765px;
+    min-height: 675px;
 }
 
 
@@ -165,7 +168,6 @@ $fontCounter: 6;
 .header,
 .marketing,
 .footer {
-    padding-left: 15px;
     padding-right: 15px;
 }
 
@@ -188,6 +190,10 @@ $fontCounter: 6;
         font-size: 1.5em;
         font-weight: bold;
         margin: 0;
+
+        sup {
+            font-size: 0.5em;
+        }
     }
 
     h1, nav {
@@ -225,7 +231,7 @@ $fontCounter: 6;
     color: $white;
     position: relative;
     background: $white;
-    padding: 16px 25px;
+    padding: 14px 25px;
     margin-bottom: 30px;
 
     h2 {
@@ -251,7 +257,7 @@ $fontCounter: 6;
     display: block;
     height: 25px;
     left: 95px;
-    padding: 6px 5px;
+    padding: 3px 5px;
     position: absolute;
     top: 14px;
     width: 25px;
@@ -300,7 +306,7 @@ $fontCounter: 6;
     cursor: pointer;
     font-family: 'Oswald Light';
     font-weight: bold;
-    margin-left: 270px;
+    margin-left: 289px;
     padding: 7px 25px;
     width: 100px;
 
