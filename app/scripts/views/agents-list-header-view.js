@@ -30,7 +30,7 @@ define(function (require) {
         render: function () {
             this.$el.html(this.template());
 
-            this.$el.find('.num-of-agents').text(this.collection.length);
+            this.$el.find('.notification-badge').text(this.collection.length);
             return this;
         }
     });
