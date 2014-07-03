@@ -144,6 +144,16 @@ html, body {
     min-height: 675px;
 }
 
+.empty-msg {
+    font-weight: bold;
+    font-size: 7em;
+    color: rgba(0, 0, 0, 0.6);
+    background: none;
+    text-align: center;
+
+    @include text-shadow(2px 2px 3px rgba(255, 255, 255, 0.1));
+}
+
 
 .agents-list {
     margin: 20px auto;
@@ -166,7 +176,6 @@ html, body {
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
-.marketing,
 .footer {
     padding-right: 15px;
 }
@@ -286,6 +295,10 @@ html, body {
     padding: 0 25px 25px;
 
     &.form-horizontal {
+
+        .form-control {
+            @include box-radius(2px);
+        }
 
         .form-group {
             margin-left: 0;

@@ -31,8 +31,8 @@ define(function (require) {
         },
 
         initialize: function() {
-            this.agentsCollection = new AgentsCollection();
-            this.agentsCollection.fetch();
+            this.agentsCollection = new AgentsCollection;
+
         },
 
         index: function() {
@@ -94,6 +94,7 @@ define(function (require) {
         },
 
         showAgentDetails: function(id) {
+            this.agentsCollection.fetch();
             this.agentDetailsView = new AgentDetailsView({ model: this.agentsCollection.get(id) });
             this.changeView(this.agentDetailsView);
         },

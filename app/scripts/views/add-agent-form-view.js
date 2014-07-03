@@ -11,6 +11,7 @@ define(function (require) {
         Agent = require('models/agent'),
         AgentView = require('views/agent-view'),
         AddFormTemplate = require('text!../templates/add-agent-form-view.html'),
+        EventManager = require('vent'),
         AddAgentFormView;
 
     AddAgentFormView = Backbone.View.extend({
@@ -38,6 +39,8 @@ define(function (require) {
             e.preventDefault();
 
             this.collection.create(formData);
+
+            EventManager.trigger('agent:added');
         },
 
         render: function() {

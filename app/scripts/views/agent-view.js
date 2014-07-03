@@ -10,13 +10,14 @@ define(function (require) {
         Backbone = require('backbone'),
         Agent = require('models/agent'),
         AgentViewTemplate = require('text!../templates/agent-view.html'),
+        EventManager = require('vent'),
         AgentView;
 
     AgentView = Backbone.View.extend({
 
         template: _.template(AgentViewTemplate),
         tagName: 'li',
-        className: 'list-group-item',
+        className: 'agent list-group-item',
 
         initialize: function () {
             this.listenTo(this.model, 'change', this.render);
@@ -39,6 +40,7 @@ define(function (require) {
 
         removeAgent: function() {
             this.remove();
+            EventManager.trigger('agent:removed');
         }
     });
 

@@ -21,8 +21,8 @@ define(function (require) {
         events: {},
 
         initialize: function() {
-            this.model.fetch();
-            this.listenTo(this.model, 'all', this.render);
+            this.listenTo(this.model, 'add', this.render);
+            this.listenTo(this.model, 'destroy', this.render);
         },
 
         render: function () {

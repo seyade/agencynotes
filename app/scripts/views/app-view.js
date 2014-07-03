@@ -26,19 +26,46 @@ define(function (require) {
             this.addAgentFormView = new AddAgentFormView({ collection: this.agentsList });
             this.agentsListView = new AgentsListView({ collection: this.agentsList });
             this.listHeaderView = new AgentsListHeaderView({ collection: this.agentsList });
+
+            this.listenTo(this.collection, 'all', this.render);
         },
 
         render: function () {
+            var $listPanel;
+
             this.$el.append(this.addAgentFormView.render().el);
             this.$el.append(this.agentsListView.render().el);
 
             // wrap list view in a 'section' tag for semantic and styling purposes
             this.agentsListView.$el.wrap('<section class="list-panel"></section>');
 
-            // add listing header to list view
-            this.$el.find('.list-panel').prepend(this.listHeaderView.render().el);
+            $listPanel = this.$el.find('.list-panel');
 
-            //this.$el.find('.list-panel').append('<p class="empty-msg hidden">Please add an agent.</p>');
+            // add listing header to list view
+            $listPanel.prepend(this.listHeaderView.render().el);
+
+            $listPanel.append('<p class="empty-msg hidden">Please add an agent.</p>');
+
+            if (this.$el.find('.agent').length < 1) {
+                $listPanel.find('.empty-msg').removeClass('hidden');
+            }
+
+            EventManager.on('agent:removed', function() {
+                if (this.$el.find('.agent').length < 1) {
+                    $listPanel.find('.empty-msg').removeClass('hidden');
+                }
+            }, this);
+
+            EventManager.on('agent:added', function() {
+                $listPanel.find('.empty-msg').addClass('hidden');
+            }, this);
+
+
+            /*if (this.$el.find('.agent').length < 1) {
+                $listPanel.find('.empty-msg').removeClass('hidden');
+            } else {
+                $listPanel.find('.empty-msg').addClass('hidden');
+            }*/
 
             return this;
         }
