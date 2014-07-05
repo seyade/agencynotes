@@ -24,7 +24,6 @@ require.config({
     }
 });
 
-require(['routers/app-routes'], function(AppRoutes) {
-    var appRoutes = new AppRoutes;
-    Backbone.history.start();
+require(['application'], function(App) {
+    App.start();
 });

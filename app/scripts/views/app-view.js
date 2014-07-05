@@ -31,7 +31,8 @@ define(function (require) {
         },
 
         render: function () {
-            var $listPanel;
+            var emptyMsgClass = '.empty-msg',
+                $listPanel;
 
             this.$el.append(this.addAgentFormView.render().el);
             this.$el.append(this.agentsListView.render().el);
@@ -43,29 +44,23 @@ define(function (require) {
 
             // add listing header to list view
             $listPanel.prepend(this.listHeaderView.render().el);
-
             $listPanel.append('<p class="empty-msg hidden">Please add an agent.</p>');
 
             if (this.$el.find('.agent').length < 1) {
-                $listPanel.find('.empty-msg').removeClass('hidden');
+                $listPanel.find(emptyMsgClass).removeClass('hidden');
+            } else {
+                $listPanel.find(emptyMsgClass).addClass('hidden');
             }
 
             EventManager.on('agent:removed', function() {
                 if (this.$el.find('.agent').length < 1) {
-                    $listPanel.find('.empty-msg').removeClass('hidden');
+                    $listPanel.find(emptyMsgClass).removeClass('hidden');
                 }
             }, this);
 
             EventManager.on('agent:added', function() {
-                $listPanel.find('.empty-msg').addClass('hidden');
+                $listPanel.find(emptyMsgClass).addClass('hidden');
             }, this);
-
-
-            /*if (this.$el.find('.agent').length < 1) {
-                $listPanel.find('.empty-msg').removeClass('hidden');
-            } else {
-                $listPanel.find('.empty-msg').addClass('hidden');
-            }*/
 
             return this;
         }
