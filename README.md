@@ -1,5 +1,5 @@
-#Agency Notes
-###Tired up of not knowing which agent put you forward for a role and when, use Agency Notes to organise your agents
+#AgencyNotes
+###Tired up of not knowing which agent put you forward for a role and when, use AgencyNotes to organise your agents
 
 The app uses:
 
