@@ -1,6 +1,6 @@
 > -
 #AgencyNotes
-###Tired up of not knowing which agent put you forward for a role and when, use AgencyNotes to organise your agents
+###Tired of not knowing which agent put you forward for a role and when, use AgencyNotes to organise your agents
 >
 > -
 
