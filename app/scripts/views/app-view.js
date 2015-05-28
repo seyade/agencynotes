@@ -22,7 +22,7 @@ define(function (require) {
         events: {},
 
         initialize: function () {
-            this.agentsList = new AgentsList;
+            this.agentsList = new AgentsList();
             this.addAgentFormView = new AddAgentFormView({ collection: this.agentsList });
             this.agentsListView = new AgentsListView({ collection: this.agentsList });
             this.listHeaderView = new AgentsListHeaderView({ collection: this.agentsList });
